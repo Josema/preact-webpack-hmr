@@ -37,9 +37,7 @@ const config = {
             name: 'vendor',
             minChunks: ({ resource }) => /node_modules/.test(resource)
         }),
-        new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin()
+        new webpack.HotModuleReplacementPlugin()
     ]
 };
 
@@ -48,11 +46,7 @@ const compiler = webpack(config);
 module.exports = function(app) {
     app.use(
         createWebpackMiddleware(compiler, {
-            quiet: true,
             noInfo: true,
-            headers: {
-                'Access-Control-Allow-Origin': '*'
-            },
             publicPath: config.output.publicPath
         })
     );
