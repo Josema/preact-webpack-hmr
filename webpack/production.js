@@ -1,7 +1,7 @@
-const webpack = require('webpack');
-const path = require('path');
+const webpack = require('webpack')
+const path = require('path')
 
-module.exports = {
+const config = {
     entry: {
         main: './src/client/index.js'
     },
@@ -40,4 +40,6 @@ module.exports = {
         }),
         new webpack.optimize.UglifyJsPlugin()
     ]
-};
+}
+
+module.exports = config

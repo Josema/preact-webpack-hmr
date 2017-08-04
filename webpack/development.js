@@ -1,7 +1,7 @@
-const webpack = require('webpack');
-const path = require('path');
-const createWebpackMiddleware = require('webpack-dev-middleware');
-const createWebpackHotMiddleware = require('webpack-hot-middleware');
+const webpack = require('webpack')
+const path = require('path')
+const createWebpackMiddleware = require('webpack-dev-middleware')
+const createWebpackHotMiddleware = require('webpack-hot-middleware')
 
 const config = {
     devtool: 'inline-source-map',
@@ -39,9 +39,9 @@ const config = {
         }),
         new webpack.HotModuleReplacementPlugin()
     ]
-};
+}
 
-const compiler = webpack(config);
+const compiler = webpack(config)
 
 module.exports = function(app) {
     app.use(
@@ -49,6 +49,6 @@ module.exports = function(app) {
             noInfo: true,
             publicPath: config.output.publicPath
         })
-    );
-    app.use(createWebpackHotMiddleware(compiler));
-};
+    )
+    app.use(createWebpackHotMiddleware(compiler))
+}

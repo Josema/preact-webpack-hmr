@@ -1,10 +1,10 @@
-import React from 'react';
-import { render } from 'react-dom';
-import App from '/components/App.js';
+import React from 'react'
+import { render } from 'react-dom'
+import App from '/components/App.js'
 
-const container = document.querySelector('#app');
+const container = document.querySelector('#app')
 
 if (module.hot)
-    module.hot.accept();
+    module.hot.accept()
 
-render(<App />, container);
+render(<App />, container)
