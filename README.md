@@ -3,10 +3,10 @@
 * express
 * preact/react
 * webpack
-* Hot Module Reload
 * babel
 * ES6
 * JSX
+* Hot Module Reload
 * Development
 * Production
 

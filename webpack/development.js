@@ -23,7 +23,7 @@ module.exports = function(app) {
     app.use(
         require('webpack-dev-middleware')(compiler, {
             noInfo: true,
-            publicPath: config.output.publicPath
+            publicPath: commonConfig.output.publicPath
         })
     )
     app.use(require('webpack-hot-middleware')(compiler))
