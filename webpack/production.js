@@ -1,45 +1,22 @@
 const webpack = require('webpack')
 const path = require('path')
+const merge = require('lodash.merge');
+const commonConfig = require('./common')
 
 const config = {
-    entry: {
-        main: './src/client/index.js'
-    },
     output: {
-        filename: '[name].js',
-        publicPath: '/bundle/',
         path: path.resolve('public/bundle')
     },
-    // Remove resolve in case you want to use react
-    resolve: {
-        extensions: ['.js'],
-        alias: {
-            react: 'preact-compat',
-            'react-dom': 'preact-compat'
-        }
-    },
-    module: {
-        loaders: [
-            {
-                test: /\.js$/,
-                loader: 'babel-loader',
-                exclude: [/node_modules/]
-            }
-        ]
-    },
     plugins: [
-        new webpack.optimize.ModuleConcatenationPlugin(),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
-            minChunks: ({ resource }) => /node_modules/.test(resource)
-        }),
+        undefined,
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: JSON.stringify('production')
             }
         }),
-        new webpack.optimize.UglifyJsPlugin()
+        new webpack.optimize.UglifyJsPlugin(),
+        new webpack.optimize.ModuleConcatenationPlugin()
     ]
 }
 
-module.exports = config
+module.exports = merge(config, commonConfig)

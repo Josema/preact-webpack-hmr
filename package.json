@@ -18,6 +18,7 @@
     "babel-preset-react": "6.11.1",
     "babel-root-slash-import": "^1.1.0",
     "express": "4.14.0",
+    "lodash.merge": "^4.6.0",
     "webpack": "^3.4.1",
     "webpack-dev-middleware": "1.6.1",
     "webpack-hot-middleware": "2.12.2"

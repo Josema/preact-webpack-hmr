@@ -1,54 +1,30 @@
 const webpack = require('webpack')
 const path = require('path')
-const createWebpackMiddleware = require('webpack-dev-middleware')
-const createWebpackHotMiddleware = require('webpack-hot-middleware')
+const merge = require('lodash.merge');
+const commonConfig = require('./common')
 
 const config = {
-    devtool: 'inline-source-map',
     entry: {
         main: [
-            'webpack-hot-middleware/client',
-            path.resolve(__dirname, '../src/client/index.js')
-        ]
-    },
-    output: {
-        filename: '[name].js',
-        publicPath: '/bundle/'
-    },
-    // Remove resolve in case you want to use react
-    resolve: {
-        extensions: ['.js'],
-        alias: {
-            react: 'preact-compat',
-            'react-dom': 'preact-compat'
-        }
-    },
-    module: {
-        loaders: [
-            {
-                test: /\.js$/,
-                loader: 'babel-loader',
-                exclude: [/node_modules/]
-            }
+            undefined,
+            'webpack-hot-middleware/client'
         ]
     },
     plugins: [
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
-            minChunks: ({ resource }) => /node_modules/.test(resource)
-        }),
+        undefined,
         new webpack.HotModuleReplacementPlugin()
-    ]
+    ],
+    devtool: 'inline-source-map'
 }
 
-const compiler = webpack(config)
 
 module.exports = function(app) {
+    const compiler = webpack(merge(config, commonConfig))
     app.use(
-        createWebpackMiddleware(compiler, {
+        require('webpack-dev-middleware')(compiler, {
             noInfo: true,
             publicPath: config.output.publicPath
         })
     )
-    app.use(createWebpackHotMiddleware(compiler))
+    app.use(require('webpack-hot-middleware')(compiler))
 }
