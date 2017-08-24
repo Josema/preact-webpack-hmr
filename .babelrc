@@ -4,6 +4,6 @@
   // use absolute paths: import App from '/components/App'
   // instead of relative: import App from '.components/App'
   "plugins": [
-    ["babel-root-slash-import", {"rootPathSuffix": "src/client/"}]
+    ["babel-root-slash-import", {"rootPathSuffix": "src/"}]
   ]
 }

@@ -1,12 +1,10 @@
-const express = require('express');
-const path = require('path');
-const app = express();
+import React from 'react'
+import { render } from 'react-dom'
+import App from '/components/App.js'
 
-if (process.env.NODE_ENV === 'development')
-    require('../webpack/development')(app)
+const container = document.querySelector('#app')
 
-app.use('/static/', express.static(path.resolve(__dirname, '../public/static/')));
-app.get('*', function(req, res){
-    res.sendFile(path.resolve(__dirname, '../public/index.html'));
-});
-app.listen(8001, () => console.log('App listening on http://localhost:8001'));
+if (module.hot)
+    module.hot.accept()
+
+render(<App />, container)
