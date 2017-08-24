@@ -4,7 +4,6 @@ import App from '/components/App.js'
 
 const container = document.querySelector('#app')
 
-if (module.hot)
-    module.hot.accept()
+if (module.hot) module.hot.accept()
 
 render(<App />, container)
