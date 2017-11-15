@@ -1,4 +1,4 @@
-# Preact/react webpack boilerplate/setup with hot module reload in development. And configuration for deploy and production
+# Preact/react webpack boilerplate/setup with hot module reload. And configuration for deploy and production
 
 * Development
 * Production
