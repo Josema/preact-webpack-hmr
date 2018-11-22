@@ -8,14 +8,6 @@ module.exports = {
         filename: '[name].js',
         publicPath: '/static/bundle/'
     },
-    // Remove resolve in case you want to use react
-    resolve: {
-        extensions: ['.js'],
-        alias: {
-            react: 'preact-compat',
-            'react-dom': 'preact-compat'
-        }
-    },
     module: {
         loaders: [
             {
